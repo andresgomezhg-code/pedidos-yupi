@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos Yupi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6f42c1">
+<link rel="icon" href="logo yupi.png">
+</head>
+
+<body>
+
+  <script>
+if (!localStorage.getItem("vendedor")) {
+  window.location.href = "login.html";
+}
+</script>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header" style="display:flex; justify-content:space-between; align-items:center;">
+
+  <img src="logo yupi.png" alt="Logo" class="logo-yupi">
+
+  <div id="userBox" style="position:relative; cursor:pointer;">
+
+    <span id="userName">Usuario</span>
+
+    <button onclick="toggleMenu()" style="margin-left:10px;">
+      👤
+    </button>
+
+    <div id="userMenu" style="
+      display:none;
+      position:absolute;
+      top:40px;
+      right:0;
+      background:white;
+      border:1px solid #ccc;
+      padding:10px;
+      border-radius:8px;
+      z-index:999;
+    ">
+
+      <button onclick="logout()" style="border:none; background:none;">
+        🚪 Cerrar sesión
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+    <!-- TÍTULO -->
+    <div id="sesionVendedor"></div>
+<h1>Nuevo Pedido</h1>
+
+
+    <!-- CLIENTES: ACCIONES -->
+    <div class="acciones-cliente">
+
+      <button onclick="nuevoCliente()">
+        + Nuevo Cliente
+      </button>
+
+      <button onclick="editarCliente()">
+        ✏️ Editar Cliente
+      </button>
+
+      <button onclick="eliminarCliente()">
+        🗑️ Eliminar Cliente
+      </button>
+
+    </div>
+
+    <!-- SELECT CLIENTE -->
+    <div class="cliente-row">
+
+      <select id="clienteSelect">
+        <option value="">Seleccionar cliente</option>
+      </select>
+
+      <button id="btnVerCliente" onclick="mostrarCliente()">
+        🔍
+      </button>
+
+    </div>
+
+    <!-- INFO CLIENTE -->
+    <div id="infoCliente" style="display:none;"></div>
+
+    <button onclick="nuevoPedido()">
+➕ Nuevo Pedido
+</button>
+
+<button onclick="agregarProducto()">
+➕ Agregar Producto
+</button>
+
+<!-- PRODUCTOS DINÁMICOS -->
+<div id="contenedorTabla" style="display:none;">
+  <table id="tablaPedido">
+    <thead>
+  <tr>
+    <th>Producto</th>
+    <th>Tipo</th>
+    <th>Cantidad</th>
+    <th>precio unitario</th>
+    <th>Subtotal</th>
+  </tr>
+</thead>
+
+    <tbody id="bodyPedido"></tbody>
+  </table>
+</div>
+
+    <!-- TOTAL -->
+    <h2 id="totalPedido">Total: $0</h2>
+
+    <!-- ACCIONES PEDIDO -->
+    <div class="acciones-pedido">
+
+      <button onclick="guardarPedido()">
+        💾 Guardar Pedido
+      </button>
+
+    </div>
+
+    
+
+<div id="pedidoActivo"></div>
+
+
+    <!-- PEDIDOS GUARDADOS -->
+    <h2>📋 Pedidos Guardados</h2>
+    <div id="listaPedidos"></div>
+
+
+    <!-- PRODUCTOS -->
+    <div class="acciones-productos">
+
+      <button onclick="nuevoProducto()">📦 Nuevo Producto</button>
+      <button onclick="editarProducto()">✏️ Editar Producto</button>
+      <button onclick="eliminarProducto()">🗑️ Eliminar Producto</button>
+
+    </div>
+
+    <!-- ADMIN PRODUCTOS -->
+    <select id="productoAdminSelect">
+      <option value="">Seleccionar producto</option>
+    </select>
+
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="data/productos.js"></script>
+  <script src="data/clientes.js"></script>
+  <script src="app.js"></script>
+
+<div class="inventario-botones">
+<button onclick="abrirInventario()" style="background:black;color:white;">
+📦 Inventario
+</button>
+
+<button onclick="descargarInventarioPDF()" style="background:green;color:white;">
+📄 Descargar PDF Inventario
+</button>
+</div>
+
+
+<!-- MODAL INVENTARIO -->
+<div id="modalInventario" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+z-index:9999;
+">
+
+  <div style="
+  background:white;
+  width:90%;
+  max-width:600px;
+  margin:50px auto;
+  padding:20px;
+  border-radius:10px;
+  max-height:80vh;
+  overflow:auto;
+  ">
+
+    <h2>📦 Inventario del día</h2>
+
+    <div id="inventarioContenido"></div>
+
+    <br>
+
+    <button onclick="cerrarInventario()" style="background:red;color:white;">
+      Cerrar
+    </button>
+
+  </div>
+
+</div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</html>

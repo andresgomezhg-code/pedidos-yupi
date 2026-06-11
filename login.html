@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio de sesión</title>
+  <style>
+    body{
+      font-family: Arial;
+      background:#f5f5f5;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .box{
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      width:300px;
+    }
+
+    input{
+      width:100%;
+      padding:10px;
+      margin-bottom:10px;
+      border:1px solid #ddd;
+      border-radius:8px;
+    }
+
+    button{
+      width:100%;
+      padding:10px;
+      background:#4CAF50;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+
+  <!-- LOGO -->
+  <div style="text-align:center; margin-bottom:15px;">
+    <img src="logo yupi.png" style="height:70px; object-fit:contain;">
+  </div>
+
+  <h3 style="text-align:center;">Inicio de sesión</h3>
+
+  <input type="text" id="nombre" placeholder="Nombre del vendedor">
+  <input type="text" id="telefono" placeholder="WhatsApp">
+
+  <button onclick="iniciar()">Entrar</button>
+
+</div>
+
+<script>
+function iniciar(){
+
+const nombre = document.getElementById("nombre").value;
+const telefono = document.getElementById("telefono").value;
+
+if(!nombre || !telefono){
+  alert("Completa los datos");
+  return;
+}
+
+localStorage.setItem("vendedor", JSON.stringify({
+  nombre,
+  telefono
+}));
+
+window.location.href = "index.html";
+
+}
+</script>
+
+</body>
+</html>

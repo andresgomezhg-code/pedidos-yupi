@@ -1,0 +1,199 @@
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+padding:20px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+}
+
+select,
+input{
+
+width:100%;
+
+padding:10px 12px;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+font-size:14px;
+
+margin-bottom:10px;
+
+outline:none;
+
+}
+
+button{
+padding:8px 14px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:14px;
+font-weight:500;
+background:#f0f2f5;
+transition:0.2s;
+}
+
+button:hover{
+transform:translateY(-1px);
+}
+
+/* =========================
+CLIENTE
+========================= */
+
+.acciones-cliente{
+display:flex;
+gap:8px;
+margin-bottom:15px;
+flex-wrap:wrap;
+}
+
+.acciones-cliente button{
+margin-right:10px;
+}
+
+.cliente-row{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+margin-bottom:15px;
+
+}
+
+.cliente-row select{
+
+margin-bottom:0;
+
+}
+
+#btnVerCliente{
+margin-top:10px;
+margin-bottom:10px;
+padding:8px 12px;
+font-size:18px;
+
+width:42px;
+
+height:42px;
+
+padding:0;
+
+font-size:18px;
+
+border-radius:10px;
+}
+
+#infoCliente{
+background:#f7f7f7;
+padding:12px;
+border-radius:8px;
+margin-top:10px;
+margin-bottom:20px;
+line-height:1.7;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+display:flex;
+justify-content:flex-end;
+margin-bottom:15px;
+}
+
+.logo-yupi{
+height:50px;
+width:auto;
+object-fit:contain;
+}
+
+/* =========================
+PRODUCTOS
+========================= */
+
+.acciones-productos{
+display:flex;
+gap:8px;
+margin-bottom:15px;
+flex-wrap:wrap;
+}
+
+.producto-row{
+border:1px solid #ddd;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
+}
+
+/* =========================
+PEDIDOS
+========================= */
+
+.pedido-card{
+
+padding:12px;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+margin-bottom:10px;
+
+background:white;
+
+}
+
+.productos-lista{
+  margin-top: 10px;
+}
+
+#tablaPedido {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tablaPedido th,
+#tablaPedido td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#tablaPedido input {
+  width: 60px;
+  text-align: center;
+}
+
+#sesionVendedor{
+  font-size:11px;
+  color:#888;
+  margin-bottom:4px;
+  font-weight:400;
+}
+
+.inventario-botones {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+
+  z-index: 9999;
+}
