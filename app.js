@@ -510,18 +510,19 @@ if(!precioUnitario) return;
 const presentacion =
 Number(
 prompt(
-"Presentación (6, 8 o 12)"
+"Presentación (1, 6, 8 o 12)"
 )
 );
 
 if(
+presentacion !== 1 &&
 presentacion !== 6 &&
 presentacion !== 8 &&
 presentacion !== 12
 ){
 
 alert(
-"La presentación debe ser 6, 8 o 12"
+"La presentación debe ser 1, 6, 8 o 12"
 );
 
 return;
@@ -597,7 +598,7 @@ producto.precioUnitario
 producto.presentacion =
 Number(
 prompt(
-"Presentación (6,8,12)",
+"Presentación (1, 6, 8 o 12)",
 producto.presentacion
 )
 ) || producto.presentacion;
@@ -1249,8 +1250,18 @@ y += 10;
 
 });
 
-const pdfBase64 = doc.output("datauristring").split(",")[1];
-Android.guardarPDF(pdfBase64);
+let texto = "📦 INVENTARIO DEL DÍA\n\n";
+
+Object.entries(inventario).forEach(([nombre, cantidad]) => {
+  texto += `${nombre}: ${cantidad.toFixed(2)}\n`;
+});
+
+// enviar a Android
+if (window.Android && Android.enviarInventario) {
+  Android.enviarInventario(texto);
+} else {
+  alert("Android no disponible");
+}
 
 }
 
