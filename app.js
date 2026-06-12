@@ -1252,7 +1252,8 @@ y += 10;
 
 });
 
-doc.save("inventario.pdf");
+const pdfBase64 = doc.output("datauristring").split(",")[1];
+Android.guardarPDF(pdfBase64);
 
 }
 
