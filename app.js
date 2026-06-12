@@ -1118,10 +1118,7 @@ pedido.productos.forEach(p => {
 
 mensaje += `%0A💰 Total: $${pedido.total.toLocaleString()}`;
 
-window.open(
-  `https://wa.me/${vendedor.telefono}?text=${mensaje}`,
-  "_blank"
-);
+location.href = `https://wa.me/${vendedor.telefono}?text=${encodeURIComponent(mensaje)}`;
 
 }
 
