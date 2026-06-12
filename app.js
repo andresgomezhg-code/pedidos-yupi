@@ -1312,3 +1312,7 @@ function cerrarSesion() {
   localStorage.removeItem("vendedor");
   window.location.href = "/login.html";
 }
+
+window.addEventListener("load", () => {
+  console.log("Android object:", window.Android);
+});
