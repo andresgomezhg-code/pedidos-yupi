@@ -1,7 +1,19 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  const vendedor = JSON.parse(localStorage.getItem("vendedor"));
+
+  if (!vendedor) {
+    window.location.href = "/login.html";
+    return;
+  }
+
+});
+
+
+
 ////////////////////////////////////////////////////////
 // 🔵 DOM
 ////////////////////////////////////////////////////////
-
 
 
 const clienteSelect =
@@ -1261,7 +1273,6 @@ if (tipo === "presentacion") {
 return 0;
 }
 
-const vendedor = JSON.parse(localStorage.getItem("vendedor"));
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -1287,7 +1298,7 @@ function toggleMenu() {
 
 function logout() {
   localStorage.removeItem("vendedor");
-  window.location.href = "login.html";
+  window.location.href = "/login.html";
 }
 
 document.addEventListener("click", function (e) {
@@ -1298,3 +1309,8 @@ document.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+
+function cerrarSesion() {
+  localStorage.removeItem("vendedor");
+  window.location.href = "/login.html";
+}
